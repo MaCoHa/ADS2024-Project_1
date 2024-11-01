@@ -1,7 +1,7 @@
 """
 *********************************************************************************************
 *
-*   Most of this code is created by Andreas Titgen from 
+*   Some of this code is created by Andreas Titgen from 
 *   https://github.com/Tietgen-ITU/advanced-data-systems/blob/main/exercise-01/scripts/sentiment/sentiment-benchmark.py
 *   But have been modifyed to work for my bechmarking
 *

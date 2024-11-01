@@ -1,10 +1,6 @@
 __train_table = 'yelp_training'
 
 
-
-
-
-
 udtf_train ="""
 CREATE OR REPLACE TABLE probabilities_python_table (
     word STRING,
