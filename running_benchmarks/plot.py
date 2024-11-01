@@ -16,23 +16,13 @@ import csv
 colors = ['blue', 'green', 'red', 'orange', 'purple', '#FF5733', '#33FF57', '#3357FF', 'cyan', 'magenta']
 
 
-# Function to create and save a line plot
-def plot_line(x, y, title="Line Plot", xlabel="X-axis", ylabel="Y-axis", filename="line_plot.png"):
-    plt.figure(figsize=(8, 6))
-    plt.plot(x, y, marker='o', linestyle='-', color='b')
-    plt.title(title)
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.grid(True)
-    plt.savefig(f"plots/{filename}", format='png')
-    plt.close()  # Close the figure after saving
 
 # Function to create and save a bar chart
 def plot_bar(categories, values, title="Bar Chart", xlabel="Categories", ylabel="Values", filename="bar_chart.png"):
 
     plot_colors = colors[:len(categories)]
 
-    #plt.figure(figsize=(8, 6))
+    plt.figure(figsize=(8, 6))
     plt.bar(categories, values, color=plot_colors)
     plt.title(title, fontsize=20)
     plt.xlabel(xlabel, fontsize=16)
@@ -41,27 +31,6 @@ def plot_bar(categories, values, title="Bar Chart", xlabel="Categories", ylabel=
     plt.savefig(f"plots/{filename}", format='png')
     plt.close()  # Close the figure after saving
 
-# Function to create and save a scatter plot
-def plot_scatter(x, y, title="Scatter Plot", xlabel="X-axis", ylabel="Y-axis", filename="scatter_plot.png"):
-    plt.figure(figsize=(8, 6))
-    plt.scatter(x, y, color='r')
-    plt.title(title)
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.grid(True)
-    plt.savefig(f"plots/{filename}", format='png')
-    plt.close()  # Close the figure after saving
-
-# Function to create and save a histogram
-def plot_histogram(data, bins=10, title="Histogram", xlabel="Values", ylabel="Frequency", filename="histogram.png"):
-    plt.figure(figsize=(8, 6))
-    plt.hist(data, bins=bins, color='purple')
-    plt.title(title)
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.grid(True)
-    plt.savefig(f"plots/{filename}", format='png')
-    plt.close()  # Close the figure after saving
 
 if __name__ == "__main__":
     data = []
