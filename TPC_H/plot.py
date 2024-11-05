@@ -47,41 +47,7 @@ def plot_lines(x, ys, title="Line Plot", xlabel="X-axis", ylabel="Y-axis", max_y
     plt.savefig(f"plots/{filename}", format='png')
     plt.close()  # Close the figure after saving
 
-# Function to create and save a bar chart
-def plot_bar(categories, values, title="Bar Chart", xlabel="Categories", ylabel="Values", filename="bar_chart.png"):
-    plt.figure(figsize=(8, 6))
-    plt.bar(categories, values)
-    plt.title(title)
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.grid(True)
-    plt.savefig(f"plots/{filename}", format='png')
-    plt.close()  # Close the figure after saving
 
-# Function to create and save a scatter plot
-def plot_scatter(x, y, title="Scatter Plot", xlabel="X-axis", ylabel="Y-axis", filename="scatter_plot.png"):
-    plt.figure(figsize=(8, 6))
-    plt.scatter(x, y, color='r')
-    plt.title(title)
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.grid(True)
-    plt.savefig(f"plots/{filename}", format='png')
-    plt.close()  # Close the figure after saving
-
-# Function to create and save a histogram
-def plot_histogram(data, bins=10, title="Histogram", xlabel="Values", ylabel="Frequency", filename="histogram.png"):
-    plt.figure(figsize=(8, 6))
-    plt.hist(data, bins=bins, color='purple')
-    plt.title(title)
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.grid(True)
-    plt.savefig(f"plots/{filename}", format='png')
-    plt.close()  # Close the figure after saving
-
-def logarithmic_normalization(data):
-    return np.log(data+1e-10)
 
 if __name__ == "__main__":
     id_to_query = {0: 1, 1: 5, 2: 18}
@@ -97,8 +63,7 @@ if __name__ == "__main__":
             if len(row) == 6:  # Check if the row has exactly six elements
                 qid, tpch_query_id, database, warehouse_size, elapsed_seconds, elapsed_milli = row
                 data.append((id_to_query[int(tpch_query_id)], database, warehouse_size, float(elapsed_seconds), int(elapsed_milli)))
-            else:
-                print(f"Skipping row due to unexpected number of columns: {row}")
+            
         
     queries_elapsed = defaultdict(lambda: list())
     for tpch_qid, schema, warehouse_size, elapsed_seconds, elapsed_milli in data:
@@ -135,6 +100,6 @@ if __name__ == "__main__":
                 dwh, 
                 title=f"Query {qid} Elapsed Time", 
                 xlabel="Schema (Scaling Factor)", 
-                ylabel="Log Normalized Elapsed Time (ms)", 
+                ylabel="Elapsed Time (ms)", 
                 max_y_value=max_y_value,
                 filename=f"query_{qid}_elapsed_time.png")

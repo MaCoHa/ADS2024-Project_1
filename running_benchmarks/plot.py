@@ -23,11 +23,18 @@ def plot_bar(categories, values, title="Bar Chart", xlabel="Categories", ylabel=
     plot_colors = colors[:len(categories)]
 
     plt.figure(figsize=(8, 6))
-    plt.bar(categories, values, color=plot_colors)
+    #plt.bar(categories, values, color=plot_colors)
+    bars = plt.bar(categories, values, color=plot_colors)
     plt.title(title, fontsize=20)
     plt.xlabel(xlabel, fontsize=16)
     plt.ylabel(ylabel, fontsize=16)
     plt.grid(True)
+    
+    for bar in bars:
+        yval = bar.get_height()
+        plt.text(bar.get_x() + bar.get_width()/2, yval, f"{yval:.1f} s", ha='center', va='bottom', fontsize=12)
+
+    
     plt.savefig(f"plots/{filename}", format='png')
     plt.close()  # Close the figure after saving
 
@@ -57,6 +64,6 @@ if __name__ == "__main__":
     plot_bar(["UDTF", "SQL"], elapsed_train, title="UDTF vs. SQL Elapsed training time", xlabel="Solution Type", ylabel="Elapsed Time (seconds)", filename="train_elapsed_seconds_bar.png")
 
     elapsed_predict = [sum(predict_udtf)/3, sum(predict_sql)/3]
-    plot_bar(["UDTF", "SQL"], elapsed_predict, title="UDTF vs. SQL Elapsed prediction time", xlabel="Solution Type", ylabel="Elapsed Time (seconds)", filename="predict_elapsed_seconds_bar.png")
+    plot_bar(["UDTF", "SQL"], elapsed_predict, title="UDTF vs. SQL Elapsed testing time", xlabel="Solution Type", ylabel="Elapsed Time (seconds)", filename="testing_elapsed_seconds_bar.png")
     
     
