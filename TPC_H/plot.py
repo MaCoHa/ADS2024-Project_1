@@ -1,12 +1,4 @@
-"""
-*********************************************************************************************
-*
-*   Some of this code is created by Andreas Titgen from 
-*   https://github.com/Tietgen-ITU/advanced-data-systems/blob/main/exercise-01/scripts/sentiment/sentiment-benchmark.py
-*   But have been modifyed to work for my bechmarking
-*
-*********************************************************************************************
-"""
+
 
 import math
 import matplotlib.pyplot as plt
@@ -96,6 +88,7 @@ if __name__ == "__main__":
     # Get the maximum elapsed time to set the y-axis limit
     max_y_value = max([max([max(v) for v in query_benchmarks[qid].values()]) for qid in query_benchmarks])
     for qid, dwh in query_benchmarks.items():
+        print(dwh)
         plot_lines(schemas, 
                 dwh, 
                 title=f"Query {qid} Elapsed Time", 
